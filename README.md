@@ -1,8 +1,8 @@
 # Custom Toolboxes
 
 This repo provides a set of customized base [toolbox
-containers](https://github.com/containers/toolbox) using a directory structure that is
-easy to modify.
+containers](https://github.com/containers/toolbox) using a directory structure that
+makes them simple to modify.
 
 ## Build
 
