@@ -1,0 +1,12 @@
+FROM docker.io/archlinux/archlinux:base-devel
+
+ENV NAME=arch-toolbox VERSION=base-devel
+LABEL com.github.containers.toolbox="true" \
+  name="$NAME" \
+  version="$VERSION" \
+  usage="This image is meant to be used with the toolbox command" \
+  summary="Base image for creating Arch Linux toolbox containers"
+
+ADD fs /
+RUN bash /build/install.sh
+ENTRYPOINT []

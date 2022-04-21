@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+###############
+## VARIABLES ##
+###############
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+###############
+## FUNCTIONS ##
+###############
+
+function print_usage {
+  echo "usage: bash scripts/build.sh [variant] [optional: containername]"
+}
+
+function print_error {
+  echo "error: $@" 1>&2
+}
+
+function exit1_with_error {
+  print_error "$@"
+  exit 1
+}
+
+function exit1_with_usage {
+  print_usage 1>&2
+  exit 1
+}
+
+function validate_dependency {
+  if test -n "$(which $1)"; then true;
+  else
+    exit1_with_error "missing dependency: $1"
+  fi
+}
+
+################
+## PROCEDURES ##
+################
+
+# start from parent directory
+cd $SCRIPT_DIR/..
+
+# validate input
+if test -z "$1"; then
+  exit1_with_usage
+fi
+variant="$1"
+containername="$2"
+if test -d "variants/$variant"; then
+  true
+else
+  print_error "variants/$variant is not a directory"
+  exit1_with_usage
+fi
+if test -f "variants/$variant/Containerfile"; then
+  true
+else
+  print_error "variants/$variant/Containerfile is not a file"
+  exit1_with_usage
+fi
+imagename="$variant-toolbox"
+if test -z "$containername"; then
+  containername="$imagename"
+fi
+
+# validate dependencies
+validate_dependency podman
+validate_dependency toolbox
+validate_dependency buildah
+
+# print variables
+echo "imagename: $imagename"
+echo "containername: $containername"
+
+# clear existing container
+podman stop $containername &>/dev/null
+toolbox rm $containername &>/dev/null
+
+# build and create
+cd "./variants/$variant"
+podman build -t $imagename . || exit 1
+toolbox create -i $imagename $containername || exit 1
+
+# enter
+cd ~
+toolbox enter $containername

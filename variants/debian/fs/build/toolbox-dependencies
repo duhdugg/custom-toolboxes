@@ -1,0 +1,4 @@
+# minimum additional packages required for working debian toolbox
+libcap2-bin
+libnss-myhostname
+sudo

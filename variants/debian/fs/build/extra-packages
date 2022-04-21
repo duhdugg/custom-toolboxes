@@ -1,0 +1,4 @@
+# extra packages for debian toolbox
+kitty-terminfo
+less
+man

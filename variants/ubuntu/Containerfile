@@ -1,0 +1,12 @@
+FROM ubuntu:latest
+
+ENV NAME=ubuntu-toolbox VERSION=latest
+LABEL com.github.containers.toolbox="true" \
+  name="$NAME" \
+  version="$VERSION" \
+  usage="This image is meant to be used with the toolbox command" \
+  summary="Base image for creating Ubuntu toolbox containers"
+
+ADD fs /
+RUN bash /build/install.sh
+ENTRYPOINT []

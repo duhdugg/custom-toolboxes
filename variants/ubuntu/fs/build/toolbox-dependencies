@@ -1,0 +1,4 @@
+# minimum required packages for working ubuntu toolbox
+libcap2-bin
+libnss-myhostname
+sudo

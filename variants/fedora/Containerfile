@@ -1,0 +1,12 @@
+FROM registry.fedoraproject.org/fedora:36
+
+ENV NAME=fedora-toolbox VERSION=36
+LABEL com.github.containers.toolbox="true" \
+  name="$NAME" \
+  version="$VERSION" \
+  usage="This image is meant to be used with the toolbox command" \
+  summary="Base image for creating Fedora toolbox containers"
+
+ADD fs /
+RUN bash /build/install.sh
+ENTRYPOINT []

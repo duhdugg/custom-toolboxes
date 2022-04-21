@@ -1,0 +1,3 @@
+# minimum additional packages required for working fedora toolbox
+passwd
+sudo

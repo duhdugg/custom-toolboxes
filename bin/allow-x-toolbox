@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# you can just put this in your ~/.xinitrc
+
+xauth add "toolbox/unix$DISPLAY" . "$(xauth list | grep "^$(hostname)/unix$DISPLAY\s*MIT-MAGIC-COOKIE-1\s*" | awk '{print $3}')"
