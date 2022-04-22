@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM docker.io/library/debian:latest
 
 ENV NAME=debian-toolbox VERSION=latest
 LABEL com.github.containers.toolbox="true" \

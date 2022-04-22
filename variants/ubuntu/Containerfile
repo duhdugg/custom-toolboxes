@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM docker.io/ubuntu:latest
 
 ENV NAME=ubuntu-toolbox VERSION=latest
 LABEL com.github.containers.toolbox="true" \

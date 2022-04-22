@@ -1,4 +1,4 @@
-FROM archlinux/archlinux:latest
+FROM docker.io/archlinux/archlinux:latest
 
 ENV NAME=arch-toolbox VERSION=latest
 LABEL com.github.containers.toolbox="true" \
