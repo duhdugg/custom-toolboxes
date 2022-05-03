@@ -24,10 +24,9 @@ run apt install -y \
   $toolbox_dependencies \
   $extra_packages
 
-# unminimize with patch to skip confirmation
-which patch &>/dev/null || run apt install -y patch
-run patch /usr/local/sbin/unminimize < /build/unminimize.patch
-run unminimize
+# unminimize
+echo "install.sh: yes | unminimize"
+yes | unminimize
 
 # clear pkg cache
 run apt-get clean
