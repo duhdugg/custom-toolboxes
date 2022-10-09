@@ -7,16 +7,16 @@ makes them simple to modify.
 ## Build
 
 ```bash
-# bin/build [variant] [optional: containername]
+# bin/build-toolbox [variant] [optional: containername]
 # examples
-bin/build arch
-bin/build arch-testing
-bin/build debian
-bin/build fedora
-bin/build ubuntu
+bin/build-toolbox arch
+bin/build-toolbox arch-testing
+bin/build-toolbox debian
+bin/build-toolbox fedora
+bin/build-toolbox ubuntu
 
 # this will build an arch toolbox named dev-toolbox (instead of arch-toolbox)
-bin/build arch dev-toolbox
+bin/build-toolbox arch dev-toolbox
 ```
 
 ## Enter
