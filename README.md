@@ -71,6 +71,6 @@ You may be able to debug with:
 
 ```bash
 podman stop -a # stops all containers
-# podman start --atach [containername]
+# podman start --attach [containername]
 podman start --attach arch-toolbox
 ```
